@@ -1,8 +1,12 @@
 import {Component} from 'angular2/core';
 import {ButtonComponent} from './scripts/button.component';
 @Component({
-    selector: 'my-app',
-    template: '<div><snbutton></snbutton></div>',
+    selector: 'myapp',
+    template: `<div>
+                <img src="images/logo.png">
+                <label>Share Now</label>
+                <snbutton></snbutton>
+               </div>`,
     directives:[ButtonComponent]
 })
 export class AppComponent { }

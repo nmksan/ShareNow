@@ -26,8 +26,8 @@ System.register(['angular2/core', './scripts/button.component'], function(export
                 }
                 AppComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
-                        template: '<div><snbutton></snbutton></div>',
+                        selector: 'myapp',
+                        template: "<div>\n                <img src=\"images/logo.png\">\n                <label>Share Now</label>\n                <snbutton></snbutton>\n               </div>",
                         directives: [button_component_1.ButtonComponent]
                     }), 
                     __metadata('design:paramtypes', [])
