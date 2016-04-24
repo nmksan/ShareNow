@@ -11,36 +11,44 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ButtonComponent;
+    var RadioButtonComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ButtonComponent = (function () {
-                function ButtonComponent() {
-                    this.buttonText = "Login";
+            RadioButtonComponent = (function () {
+                function RadioButtonComponent() {
                     this.myevent = new core_1.EventEmitter();
+                    this.mth();
                 }
-                ButtonComponent.prototype.fireevent = function () {
+                RadioButtonComponent.prototype.mth = function () {
+                    console.log(this.radiobuttons);
+                };
+                RadioButtonComponent.prototype.fireevent = function (value) {
+                    alert(value);
                     this.myevent.next(['a', 'b']);
                 };
                 __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], RadioButtonComponent.prototype, "radiobuttons", void 0);
+                __decorate([
                     core_1.Output(), 
                     __metadata('design:type', core_1.EventEmitter)
-                ], ButtonComponent.prototype, "myevent", void 0);
-                ButtonComponent = __decorate([
+                ], RadioButtonComponent.prototype, "myevent", void 0);
+                RadioButtonComponent = __decorate([
                     core_1.Component({
-                        selector: 'snbutton',
-                        template: "<div><button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button></div>"
+                        selector: 'snradiobutton',
+                        template: "<div *ngFor=\"#radiobutton of radiobuttons;#i=index\">\n                <input type=\"radio\" name=\"{{radiobutton.group}}\" (click)=\"fireevent(radiobutton.id)\" checked>\n                <label>{{radiobutton.name}}</label>\n            </div>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ButtonComponent);
-                return ButtonComponent;
+                ], RadioButtonComponent);
+                return RadioButtonComponent;
             }());
-            exports_1("ButtonComponent", ButtonComponent);
+            exports_1("RadioButtonComponent", RadioButtonComponent);
         }
     }
 });
-//# sourceMappingURL=button.component.js.map
+//# sourceMappingURL=radiobutton.component.js.map

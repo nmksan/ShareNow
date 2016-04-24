@@ -11,36 +11,31 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ButtonComponent;
+    var TextBoxComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ButtonComponent = (function () {
-                function ButtonComponent() {
-                    this.buttonText = "Login";
-                    this.myevent = new core_1.EventEmitter();
+            TextBoxComponent = (function () {
+                function TextBoxComponent() {
                 }
-                ButtonComponent.prototype.fireevent = function () {
-                    this.myevent.next(['a', 'b']);
-                };
                 __decorate([
-                    core_1.Output(), 
-                    __metadata('design:type', core_1.EventEmitter)
-                ], ButtonComponent.prototype, "myevent", void 0);
-                ButtonComponent = __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', Object)
+                ], TextBoxComponent.prototype, "json", void 0);
+                TextBoxComponent = __decorate([
                     core_1.Component({
-                        selector: 'snbutton',
-                        template: "<div><button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button></div>"
+                        selector: 'sntextbox',
+                        template: "<div>\n                <label>{{json.text}}</label>\n                <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n            </div>"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ButtonComponent);
-                return ButtonComponent;
+                ], TextBoxComponent);
+                return TextBoxComponent;
             }());
-            exports_1("ButtonComponent", ButtonComponent);
+            exports_1("TextBoxComponent", TextBoxComponent);
         }
     }
 });
-//# sourceMappingURL=button.component.js.map
+//# sourceMappingURL=textbox.component.js.map
