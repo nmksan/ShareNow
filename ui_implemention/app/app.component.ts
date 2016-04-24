@@ -3,6 +3,7 @@ import {ButtonComponent} from './scripts/button.component';
 import {TextBoxComponent} from './scripts/textbox.component';
 import {RadioButtonComponent} from './scripts/radiobutton.component';
 import {CheckboxComponent} from './scripts/checkbox.component';
+import {MenuComponent} from './scripts/menu.component';
 @Component({
     selector: 'myapp',
     
@@ -13,8 +14,9 @@ import {CheckboxComponent} from './scripts/checkbox.component';
                 <snbutton  (myevent)=handleevent()></snbutton>
                 <snradiobutton [radiobuttons]='radiobuttons'></snradiobutton>
                 <sncheckbox [checkboxjson]='radiobuttons'></sncheckbox>
+                <snmenu [menujson]='menulist'></snmenu>
                </div>`,
-    directives:[ButtonComponent,TextBoxComponent,RadioButtonComponent,CheckboxComponent]
+    directives:[ButtonComponent,TextBoxComponent,RadioButtonComponent,CheckboxComponent,MenuComponent]
 })
 export class AppComponent {
     jsondata : any = {
@@ -22,7 +24,7 @@ export class AppComponent {
         "placeholder":"UserName",
         "name":"name"
         };
-    
+    menulist=['Home','Pay','create group','logout'];
         radiobuttons:any = 
         [
             {"name" : "apple",
