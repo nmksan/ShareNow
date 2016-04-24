@@ -11,44 +11,44 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var RadioButtonComponent;
+    var CheckboxComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            RadioButtonComponent = (function () {
-                function RadioButtonComponent() {
-                    this.myevent = new core_1.EventEmitter();
-                    this.mth();
+            CheckboxComponent = (function () {
+                function CheckboxComponent() {
+                    this.list = new Array();
                 }
-                RadioButtonComponent.prototype.mth = function () {
-                    console.log(this.radiobuttons);
-                };
-                RadioButtonComponent.prototype.fireevent = function (value) {
-                    alert(value);
-                    this.myevent.next(value);
+                CheckboxComponent.prototype.checkedvalues = function (value1) {
+                    alert(value1.checked);
+                    if (value1.checked) {
+                        this.list.push(value1.value);
+                    }
+                    else {
+                        var index = this.list.indexOf(value1.value);
+                        if (index > -1) {
+                            this.list.splice(index, 1);
+                        }
+                    }
                 };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Object)
-                ], RadioButtonComponent.prototype, "radiobuttons", void 0);
-                __decorate([
-                    core_1.Output(), 
-                    __metadata('design:type', core_1.EventEmitter)
-                ], RadioButtonComponent.prototype, "myevent", void 0);
-                RadioButtonComponent = __decorate([
+                ], CheckboxComponent.prototype, "checkboxjson", void 0);
+                CheckboxComponent = __decorate([
                     core_1.Component({
-                        selector: 'snradiobutton',
-                        template: "<div *ngFor=\"#radiobutton of radiobuttons;#i=index\">\n                <input type=\"radio\" name=\"{{radiobutton.group}}\" (click)=\"fireevent(radiobutton.id)\" checked>\n                <label>{{radiobutton.name}}</label>\n            </div>"
+                        selector: 'sncheckbox',
+                        template: "<div *ngFor=\"#checkbox of checkboxjson;#i=index\">\n                <input type=\"checkbox\" name=\"{{checkbox.group}}\" value=\"{{checkbox.name}}\" (click)=\"checkedvalues(checkboxobj)\" #checkboxobj>\n                <label>{{checkbox.name}}</label>\n            </div>\n            "
                     }), 
                     __metadata('design:paramtypes', [])
-                ], RadioButtonComponent);
-                return RadioButtonComponent;
+                ], CheckboxComponent);
+                return CheckboxComponent;
             }());
-            exports_1("RadioButtonComponent", RadioButtonComponent);
+            exports_1("CheckboxComponent", CheckboxComponent);
         }
     }
 });
-//# sourceMappingURL=radiobutton.component.js.map
+//# sourceMappingURL=checkbox.component.js.map

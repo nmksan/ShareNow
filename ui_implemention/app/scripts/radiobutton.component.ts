@@ -19,6 +19,6 @@ export class RadioButtonComponent {
     
     fireevent(value){
         alert(value);
-        this.myevent.next(['a','b']);
+        this.myevent.next(value);
     }
 }
