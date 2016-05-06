@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', '../container/nav.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,30 +10,33 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, nav_service_1;
     var MenuComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (nav_service_1_1) {
+                nav_service_1 = nav_service_1_1;
             }],
         execute: function() {
             MenuComponent = (function () {
-                function MenuComponent() {
+                function MenuComponent(navService) {
+                    this.navService = navService;
+                    this.menulist = ['home', 'Pay', 'creategroup', 'logout'];
+                    this.item = "pay";
                 }
-                MenuComponent.prototype.menuselected = function (value) {
-                    console.log(value);
+                MenuComponent.prototype.selectedNavItem = function (item) {
+                    console.log('selected nav item ' + item);
+                    this.navService.emitNavChangeEvent(item);
                 };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Object)
-                ], MenuComponent.prototype, "menujson", void 0);
                 MenuComponent = __decorate([
                     core_1.Component({
                         selector: 'snmenu',
-                        template: "<div >\n                <input type='button' value='{{menu}}' *ngFor=\"#menu of menujson;\" (click)='menuselected(menu)'>\n            </div>\n            "
+                        template: "<div >\n                <input type='button' value='{{menu}}' *ngFor=\"#menu of menulist;\" (click)='selectedNavItem(menu)'>\n            </div>\n            "
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [nav_service_1.NavService])
                 ], MenuComponent);
                 return MenuComponent;
             }());
