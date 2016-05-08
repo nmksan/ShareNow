@@ -24,7 +24,7 @@ System.register(['angular2/core', '../container/nav.service'], function(exports_
             MenuComponent = (function () {
                 function MenuComponent(navService) {
                     this.navService = navService;
-                    this.menulist = ['home', 'Pay', 'creategroup', 'logout'];
+                    this.menulist = ['home', 'Pay', 'shareamount', 'report', 'creategroup', 'logout'];
                     this.item = "pay";
                 }
                 MenuComponent.prototype.selectedNavItem = function (item) {

@@ -1,6 +1,7 @@
 export let ComponentType = {
-    textBox:'textBox',
-    button:'button'
+    textBox:'textbox',
+    button:'button',
+    searchBox:'searchbox'
 }
 
 interface componentSettings{

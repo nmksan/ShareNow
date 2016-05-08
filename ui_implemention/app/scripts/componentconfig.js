@@ -11,8 +11,9 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             exports_1("ComponentType", ComponentType = {
-                textBox: 'textBox',
-                button: 'button'
+                textBox: 'textbox',
+                button: 'button',
+                searchBox: 'searchbox'
             });
             componentValue = (function () {
                 function componentValue() {

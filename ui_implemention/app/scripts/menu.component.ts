@@ -8,7 +8,7 @@ import {NavService} from '../container/nav.service';
             `
   })
 export class MenuComponent { 
-     menulist=['home','Pay','creategroup','logout'];
+     menulist=['home','Pay','shareamount','report','creategroup','logout'];
     item = "pay";
     constructor(private navService:NavService) {}
     selectedNavItem(item: number) {

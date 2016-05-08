@@ -1,5 +1,5 @@
 {
-  "menuType": "shareAmount",
+  "menuType": "shareamount",
   "values": [
     {"componentType": "textBox",
     "id":"shareAmount",
