@@ -1,4 +1,4 @@
-System.register(['angular2/core', './scripts/button.component', './scripts/textbox.component', './scripts/radiobutton.component', './scripts/checkbox.component', './scripts/menu.component', './services/creategroup.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './scripts/button.component', './scripts/textbox.component', './scripts/radiobutton.component', './scripts/checkbox.component', './scripts/menu.component', './services/creategroup.service', './services/pay.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './scripts/button.component', './scripts/textb
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, button_component_1, textbox_component_1, radiobutton_component_1, checkbox_component_1, menu_component_1, creategroup_service_1;
+    var core_1, button_component_1, textbox_component_1, radiobutton_component_1, checkbox_component_1, menu_component_1, creategroup_service_1, pay_service_1;
     var AppComponent;
     return {
         setters:[
@@ -34,11 +34,15 @@ System.register(['angular2/core', './scripts/button.component', './scripts/textb
             },
             function (creategroup_service_1_1) {
                 creategroup_service_1 = creategroup_service_1_1;
+            },
+            function (pay_service_1_1) {
+                pay_service_1 = pay_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(createg) {
-                    this.createg = createg;
+                function AppComponent(payService, cretservice) {
+                    this.payService = payService;
+                    this.cretservice = cretservice;
                     this.jsondata = {
                         "text": "test",
                         "placeholder": "UserName",
@@ -57,22 +61,34 @@ System.register(['angular2/core', './scripts/button.component', './scripts/textb
                             "id": "otherfruit" }
                     ];
                 }
-                AppComponent.prototype.handleevent = function () {
-                    alert("hi");
+                AppComponent.prototype.ngOnInit = function () { this.getda(); };
+                AppComponent.prototype.getda = function () {
+                    var _this = this;
+                    this.tst = this.payService.getgroupname().subscribe(function (d) {
+                        _this.tst = d;
+                    });
                 };
                 AppComponent.prototype.getcg = function () {
-                    // this.cg = this.createg.getcreategroup();
-                    // console.log("creategrp");
-                    // console.log(this.cg)
+                    alert("calling");
+                    this.cg = this.cretservice.getcreategroup();
+                    console.log("creategrp");
+                    console.log(this.cg);
+                    // console.log(this.cg[0]);
                     console.log("end");
+                };
+                // constructor(public createg : CreateGroupService){
+                // }
+                AppComponent.prototype.handleevent = function () {
+                    alert("hi");
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'myapp',
-                        template: "<div>\n                <img src=\"images/logo.png\">\n                <label id='appname'>Share Now</label>\n                <sntextbox [json]='jsondata'></sntextbox>\n                <snbutton  (myevent)=getcg()></snbutton>\n                <snradiobutton [radiobuttons]='radiobuttons'></snradiobutton>\n                <sncheckbox [checkboxjson]='radiobuttons'></sncheckbox>\n                <snmenu [menujson]='menulist'></snmenu>\n                <ul>\n                    <li *ngFor=\"#vehicle of cg | async\">\n                        {{ vehicle.menuType }}\n                    </li>\n                </ul>\n               </div>",
-                        directives: [button_component_1.ButtonComponent, textbox_component_1.TextBoxComponent, radiobutton_component_1.RadioButtonComponent, checkbox_component_1.CheckboxComponent, menu_component_1.MenuComponent]
+                        providers: [creategroup_service_1.CreateGroupService, pay_service_1.PayService],
+                        template: "<div>\n                <img src=\"images/logo.png\">\n                <label id='appname'>Share Now</label>\n                <sntextbox [json]='jsondata'></sntextbox>\n                <snbutton  (myevent)=getda()></snbutton>\n                <snradiobutton [radiobuttons]='radiobuttons'></snradiobutton>\n                <sncheckbox [checkboxjson]='radiobuttons'></sncheckbox>\n                <label>{{tst.groupname}}</label>\n                \n               </div>",
+                        directives: [button_component_1.ButtonComponent, textbox_component_1.TextBoxComponent, radiobutton_component_1.RadioButtonComponent, checkbox_component_1.CheckboxComponent, menu_component_1.MenuComponent],
                     }), 
-                    __metadata('design:paramtypes', [creategroup_service_1.CreateGroupService])
+                    __metadata('design:paramtypes', [pay_service_1.PayService, creategroup_service_1.CreateGroupService])
                 ], AppComponent);
                 return AppComponent;
             }());

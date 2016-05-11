@@ -30,7 +30,8 @@ export class componentconfig<T extends componentSettings> extends componentValue
 }
 
 export interface textboxSettings extends componentSettings{
-    placeHolder:string;
+    placeholder:string;
+    name:string;
 }
 export interface button extends componentSettings{
     text:string;

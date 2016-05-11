@@ -15,7 +15,9 @@
       },
       "setting": {
         "showLabel": "true",
-        "staticText": "amount"
+        "staticText": "amount",
+        "placeholder":"Amount",
+        "name":"amount"
       }
     },
     {

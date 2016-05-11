@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', '../services/shareamount.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,16 +10,20 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, shareamount_service_1;
     var ShareAmountScreen;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (shareamount_service_1_1) {
+                shareamount_service_1 = shareamount_service_1_1;
             }],
         execute: function() {
             ShareAmountScreen = (function () {
-                function ShareAmountScreen() {
+                function ShareAmountScreen(shareAmountService) {
+                    this.shareAmountService = shareAmountService;
                     this.buttonText = "Share maadi";
                     this.json = {
                         "text": "Enter Amount",
@@ -27,15 +31,25 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         "name": "amount"
                     };
                 }
+                ShareAmountScreen.prototype.ngOnInit = function () { this.getMembers(); };
+                ShareAmountScreen.prototype.getMembers = function () {
+                    var _this = this;
+                    this.memberList = this.shareAmountService.getMembers().subscribe(function (data) {
+                        _this.memberList = data;
+                        console.log(_this.memberList);
+                    });
+                };
                 ShareAmountScreen.prototype.fireevent = function () {
                     console.log("share amoubt button");
+                    console.log(this.mem);
                 };
                 ShareAmountScreen = __decorate([
                     core_1.Component({
                         selector: 'shareamount',
-                        template: "<div>\n                    <label>{{json.text}}</label>\n                    <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n                    <button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button>\n               </div>"
+                        providers: [shareamount_service_1.ShareAmountService],
+                        template: "<div>\n                    <label>{{json.text}}</label>\n                    <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n                    <select onchange=\"alert(this.value);mem=this.value\">\n                        <option value=\"{{member}}\" *ngFor=\"#member of memberList.members\" >{{member}}</option>\n                    </select>\n                    <button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button>\n               </div>"
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [shareamount_service_1.ShareAmountService])
                 ], ShareAmountScreen);
                 return ShareAmountScreen;
             }());

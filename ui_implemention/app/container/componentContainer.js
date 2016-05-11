@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../datamodel/screen.service', './nav.service', '../scripts/menu.component', '../screens/pay.screen', '../screens/creategroup.screen', '../screens/shareamount.screen', '../screens/report.screen'], function(exports_1, context_1) {
+System.register(['angular2/core', '../datamodel/screen.service', './nav.service', '../scripts/menu.component', '../screens/pay.screen', '../screens/creategroup.screen', '../screens/shareamount.screen', '../screens/report.screen', '../services/pay.service', 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../datamodel/screen.service', './nav.service'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, screen_service_1, nav_service_1, menu_component_1, pay_screen_1, creategroup_screen_1, shareamount_screen_1, report_screen_1;
+    var core_1, screen_service_1, nav_service_1, menu_component_1, pay_screen_1, creategroup_screen_1, shareamount_screen_1, report_screen_1, pay_service_1, http_1;
     var componentContainer;
     return {
         setters:[
@@ -37,6 +37,12 @@ System.register(['angular2/core', '../datamodel/screen.service', './nav.service'
             },
             function (report_screen_1_1) {
                 report_screen_1 = report_screen_1_1;
+            },
+            function (pay_service_1_1) {
+                pay_service_1 = pay_service_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             componentContainer = (function () {
@@ -58,11 +64,11 @@ System.register(['angular2/core', '../datamodel/screen.service', './nav.service'
                         return false;
                 };
                 componentContainer.prototype.selectedNavItem = function (item) {
-                    var _this = this;
                     this.menuItem = item;
-                    this.dataService.ComponentData(this.menuItem).subscribe(function (menu) {
-                        _this.componentJson = menu;
-                    });
+                    // this.dataService.ComponentData(this.menuItem).subscribe(menu => {
+                    //             this.componentJson = menu;
+                    //             this.componentValueArray = this.componentJson.values;
+                    //         });
                 };
                 componentContainer.prototype.ngOnDestroy = function () {
                     this.subscription.unsubscribe();
@@ -70,9 +76,9 @@ System.register(['angular2/core', '../datamodel/screen.service', './nav.service'
                 componentContainer = __decorate([
                     core_1.Component({
                         selector: 'container',
-                        providers: [nav_service_1.NavService],
+                        providers: [nav_service_1.NavService, pay_service_1.PayService, http_1.HTTP_PROVIDERS],
                         directives: [menu_component_1.MenuComponent, pay_screen_1.PayScreen, creategroup_screen_1.CreateGroupScreen, shareamount_screen_1.ShareAmountScreen, report_screen_1.ReportScreen],
-                        template: "<div>\n                    <snmenu></snmenu>\n                    <div id=\"component_container\" ></div>\n                    <pay *ngIf=\"isScreen('Pay')\"></pay>\n                    <creategroup *ngIf=\"isScreen('creategroup')\"></creategroup>\n                    <shareamount *ngIf=\"isScreen('shareamount')\"></shareamount>\n                    <report *ngIf=\"isScreen('report')\"></report>\n                </div>"
+                        template: "<div>\n                    <snmenu></snmenu>\n                    <div id=\"component_container\" ></div>\n                    <pay *ngIf=\"isScreen('Pay')\" [componentJson]='componentValueArray'></pay>\n                    <creategroup *ngIf=\"isScreen('creategroup')\"></creategroup>\n                    <shareamount *ngIf=\"isScreen('shareamount')\"></shareamount>\n                    <report *ngIf=\"isScreen('report')\"></report>\n                </div>"
                     }), 
                     __metadata('design:paramtypes', [nav_service_1.NavService, screen_service_1.ComponentDataService])
                 ], componentContainer);

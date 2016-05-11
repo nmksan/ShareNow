@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1, Rx_1;
-    var Vehicle, CreateGroupService;
+    var ShareAmountService;
     return {
         setters:[
             function (core_1_1) {
@@ -24,46 +24,31 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                 Rx_1 = Rx_1_1;
             }],
         execute: function() {
-            Vehicle = (function () {
-                function Vehicle(id, name, side) {
-                    this.id = id;
-                    this.name = name;
-                    this.side = side;
-                }
-                return Vehicle;
-            }());
-            exports_1("Vehicle", Vehicle);
-            CreateGroupService = (function () {
-                function CreateGroupService(_http) {
+            ShareAmountService = (function () {
+                function ShareAmountService(_http) {
                     this._http = _http;
                 }
-                CreateGroupService.prototype.getcreategroup = function (value) {
-                    return this._http.get('app/json/creategroup.json')
+                ShareAmountService.prototype.getMembers = function () {
+                    return this._http.get('app/json/members.json')
                         .map(function (response) {
-                        var vehicles = response.json().data;
-                        console.log(response.json().data);
-                        if (!value)
-                            return vehicles;
-                        return vehicles.filter(function (v) { return v.name.toLowerCase().includes(value.toLowerCase()); });
+                        var grpnm = response.json();
+                        return grpnm;
                     })
                         .do(function (data) { return console.log(data); })
                         .catch(this.handleError);
                 };
-                CreateGroupService.prototype.testsample = function () {
-                    return this._http.get('app/json/creategroup.json').map(function (response) { return response.json(); });
-                };
-                CreateGroupService.prototype.handleError = function (error) {
+                ShareAmountService.prototype.handleError = function (error) {
                     console.error(error);
                     return Rx_1.Observable.throw(error.json().error || 'Server error');
                 };
-                CreateGroupService = __decorate([
+                ShareAmountService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
-                ], CreateGroupService);
-                return CreateGroupService;
+                ], ShareAmountService);
+                return ShareAmountService;
             }());
-            exports_1("CreateGroupService", CreateGroupService);
+            exports_1("ShareAmountService", ShareAmountService);
         }
     }
 });
-//# sourceMappingURL=creategroup.service.js.map
+//# sourceMappingURL=shareamount.service.js.map

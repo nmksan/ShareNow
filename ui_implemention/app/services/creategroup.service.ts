@@ -14,11 +14,17 @@ export class CreateGroupService {
    return this._http.get('app/json/creategroup.json')
       .map((response: Response) => {
         let vehicles = <Vehicle[]>response.json().data;
+        console.log(response.json().data);
         if (!value) return vehicles;
         return vehicles.filter(v => v.name.toLowerCase().includes(value.toLowerCase()))
       })
       .do(data => console.log(data))
       .catch(this.handleError);
+  }
+  
+  
+  public testsample(){
+    return this._http.get('app/json/creategroup.json').map((response: Response)=>{return response.json();});
   }
 
   private handleError(error: Response) {

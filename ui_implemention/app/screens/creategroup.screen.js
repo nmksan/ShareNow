@@ -20,11 +20,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             CreateGroupScreen = (function () {
                 function CreateGroupScreen() {
-                    this.buttonText = "crete";
+                    this.buttonText = "create";
                     this.json = {
                         "text": "creategroup",
                         "placeholder": "Group Name",
                         "name": "name"
+                    };
+                    this.searchjson = {
+                        "text": "searchGroup",
+                        "placeholder": "search Group",
+                        "name": "serchname"
                     };
                 }
                 CreateGroupScreen.prototype.fireevent = function () {
@@ -33,7 +38,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 CreateGroupScreen = __decorate([
                     core_1.Component({
                         selector: 'creategroup',
-                        template: "<div>\n                    <label>{{json.text}}</label>\n                    <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n                    <button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button>\n               </div>"
+                        template: "<div>\n                    <label>{{json.text}}</label>\n                    <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n                    <label>{{searchjson.text}}</label>\n                    <input type=\"search\" name=\"{{searchjson.name}}\" placeholder=\"{{searchjson.placeholder}}\" >\n                    <button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button>\n               </div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CreateGroupScreen);
