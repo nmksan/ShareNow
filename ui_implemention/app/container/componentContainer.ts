@@ -17,7 +17,7 @@ import { HTTP_PROVIDERS } from 'angular2/http';
   directives: [MenuComponent, PayScreen, CreateGroupScreen, ShareAmountScreen, ReportScreen],
   template: `<div>
                     <snmenu></snmenu>
-                    <div id="component_container" ></div>
+                    
                     <pay *ngIf="isScreen('Pay')" [componentJson]='componentValueArray'></pay>
                     <creategroup *ngIf="isScreen('creategroup')"></creategroup>
                     <shareamount *ngIf="isScreen('shareamount')"></shareamount>
