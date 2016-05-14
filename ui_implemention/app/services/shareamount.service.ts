@@ -9,8 +9,9 @@ export class ShareAmountService {
   constructor(private _http: Http) { }
 
  public getMembers() {
-   return this._http.get('app/json/members.json')
+   return this._http.get('http://localhost:50528/Sampleservice.svc/creategroup')
       .map((response: Response) => {
+        alert(response);
         let grpnm = response.json();
         return grpnm;
       })

@@ -47,7 +47,7 @@ System.register(['angular2/core', '../services/shareamount.service'], function(e
                     core_1.Component({
                         selector: 'shareamount',
                         providers: [shareamount_service_1.ShareAmountService],
-                        template: "<div>\n                    <label>{{json.text}}</label>\n                    <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n                    <select onchange=\"alert(this.value);mem=this.value\">\n                        <option value=\"{{member}}\" *ngFor=\"#member of memberList.members\" >{{member}}</option>\n                    </select>\n                    <button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button>\n               </div>"
+                        template: "<div>\n                    <label>{{json.text}}</label>\n                    <input type=\"text\" name=\"{{json.name}}\" placeholder=\"{{json.placeholder}}\" >\n                    <select onchange=\"alert(this.value);mem=this.value\">\n                        <option value=\"{{member}}\" *ngFor=\"#member of memberList.creategroupResult\" >{{member}}</option>\n                    </select>\n                    <button type=\"submit\" value=\"Submit\" (click)=\"fireevent()\">{{buttonText}}</button>\n               </div>"
                     }), 
                     __metadata('design:paramtypes', [shareamount_service_1.ShareAmountService])
                 ], ShareAmountScreen);

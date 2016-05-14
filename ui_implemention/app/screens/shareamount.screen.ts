@@ -8,7 +8,7 @@ import {ShareAmountService} from '../services/shareamount.service';
                     <label>{{json.text}}</label>
                     <input type="text" name="{{json.name}}" placeholder="{{json.placeholder}}" >
                     <select onchange="alert(this.value);mem=this.value">
-                        <option value="{{member}}" *ngFor="#member of memberList.members" >{{member}}</option>
+                        <option value="{{member}}" *ngFor="#member of memberList.creategroupResult" >{{member}}</option>
                     </select>
                     <button type="submit" value="Submit" (click)="fireevent()">{{buttonText}}</button>
                </div>`

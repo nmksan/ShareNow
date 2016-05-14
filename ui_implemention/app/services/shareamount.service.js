@@ -29,8 +29,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx'], function(exports_
                     this._http = _http;
                 }
                 ShareAmountService.prototype.getMembers = function () {
-                    return this._http.get('app/json/members.json')
+                    return this._http.get('http://localhost:50528/Sampleservice.svc/creategroup')
                         .map(function (response) {
+                        alert(response);
                         var grpnm = response.json();
                         return grpnm;
                     })
