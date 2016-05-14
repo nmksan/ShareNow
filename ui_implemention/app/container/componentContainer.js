@@ -78,7 +78,7 @@ System.register(['angular2/core', '../datamodel/screen.service', './nav.service'
                         selector: 'container',
                         providers: [nav_service_1.NavService, pay_service_1.PayService, http_1.HTTP_PROVIDERS],
                         directives: [menu_component_1.MenuComponent, pay_screen_1.PayScreen, creategroup_screen_1.CreateGroupScreen, shareamount_screen_1.ShareAmountScreen, report_screen_1.ReportScreen],
-                        template: "<div>\n                    <snmenu></snmenu>\n                    <div id=\"component_container\" ></div>\n                    <pay *ngIf=\"isScreen('Pay')\" [componentJson]='componentValueArray'></pay>\n                    <creategroup *ngIf=\"isScreen('creategroup')\"></creategroup>\n                    <shareamount *ngIf=\"isScreen('shareamount')\"></shareamount>\n                    <report *ngIf=\"isScreen('report')\"></report>\n                </div>"
+                        template: "<div>\n                    <snmenu></snmenu>\n                    \n                    <pay *ngIf=\"isScreen('Pay')\" [componentJson]='componentValueArray'></pay>\n                    <creategroup *ngIf=\"isScreen('creategroup')\"></creategroup>\n                    <shareamount *ngIf=\"isScreen('shareamount')\"></shareamount>\n                    <report *ngIf=\"isScreen('report')\"></report>\n                </div>"
                     }), 
                     __metadata('design:paramtypes', [nav_service_1.NavService, screen_service_1.ComponentDataService])
                 ], componentContainer);

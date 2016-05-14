@@ -11,7 +11,7 @@ export class MenuComponent {
      menulist=['home','Pay','shareamount','report','creategroup','logout'];
     item = "pay";
     constructor(private navService:NavService) {}
-    selectedNavItem(item: number) {
+    selectedNavItem(item: string) {
             console.log('selected nav item ' + item);
             this.navService.emitNavChangeEvent(item);
         }
