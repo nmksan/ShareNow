@@ -1,0 +1,10 @@
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\SampleWCF.dll.config
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\SampleWCF.dll
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\SampleWCF.pdb
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\obj\Debug\SampleWCF.dll
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\obj\Debug\SampleWCF.pdb
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\EntityFramework.dll
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\EntityFramework.SqlServer.dll
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\EntityFramework.xml
+c:\users\mkrishnan\documents\visual studio 2015\Projects\SampleWCF\SampleWCF\bin\EntityFramework.SqlServer.xml
+C:\Users\mkrishnan\Documents\Visual Studio 2015\Projects\SampleWCF\SampleWCF\obj\Debug\SampleWCF.csprojResolveAssemblyReference.cache

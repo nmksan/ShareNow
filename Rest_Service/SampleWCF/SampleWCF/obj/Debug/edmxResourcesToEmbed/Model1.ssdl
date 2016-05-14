@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sharenowdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="groupdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="userid" Type="int" />
+  </EntityType>
+  <EntityType Name="shareamount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="userid" Type="int" />
+  </EntityType>
+  <EntityType Name="userdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="groupid" Type="int" />
+    <Property Name="fullname" Type="varchar" MaxLength="50" />
+    <Property Name="phoneno" Type="varchar" MaxLength="10" />
+    <Property Name="emailid" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="varchar" MaxLength="50" />
+    <Property Name="phoneno" Type="varchar" MaxLength="10" />
+    <Property Name="emailid" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__payment__userid__3E52440B">
+    <End Role="userdetails" Type="Self.userdetails" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userdetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shareamou__useri__3B75D760">
+    <End Role="userdetails" Type="Self.userdetails" Multiplicity="0..1" />
+    <End Role="shareamount" Type="Self.shareamount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userdetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="shareamount">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__userdetai__group__38996AB5">
+    <End Role="groupdetails" Type="Self.groupdetails" Multiplicity="0..1" />
+    <End Role="userdetails" Type="Self.userdetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groupdetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="userdetails">
+        <PropertyRef Name="groupid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sharenowdbModelStoreContainer">
+    <EntitySet Name="groupdetails" EntityType="Self.groupdetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shareamount" EntityType="Self.shareamount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userdetails" EntityType="Self.userdetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__payment__userid__3E52440B" Association="Self.FK__payment__userid__3E52440B">
+      <End Role="userdetails" EntitySet="userdetails" />
+      <End Role="payment" EntitySet="payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shareamou__useri__3B75D760" Association="Self.FK__shareamou__useri__3B75D760">
+      <End Role="userdetails" EntitySet="userdetails" />
+      <End Role="shareamount" EntitySet="shareamount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__userdetai__group__38996AB5" Association="Self.FK__userdetai__group__38996AB5">
+      <End Role="groupdetails" EntitySet="groupdetails" />
+      <End Role="userdetails" EntitySet="userdetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

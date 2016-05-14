@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sharenowdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="groupdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="userdetails" Relationship="Self.FK__userdetai__group__38996AB5" FromRole="groupdetails" ToRole="userdetails" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="userid" Type="Int32" />
+    <NavigationProperty Name="userdetail" Relationship="Self.FK__payment__userid__3E52440B" FromRole="payment" ToRole="userdetails" />
+  </EntityType>
+  <EntityType Name="shareamount">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="userid" Type="Int32" />
+    <NavigationProperty Name="userdetail" Relationship="Self.FK__shareamou__useri__3B75D760" FromRole="shareamount" ToRole="userdetails" />
+  </EntityType>
+  <EntityType Name="userdetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="groupid" Type="Int32" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phoneno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="groupdetail" Relationship="Self.FK__userdetai__group__38996AB5" FromRole="userdetails" ToRole="groupdetails" />
+    <NavigationProperty Name="payments" Relationship="Self.FK__payment__userid__3E52440B" FromRole="userdetails" ToRole="payment" />
+    <NavigationProperty Name="shareamounts" Relationship="Self.FK__shareamou__useri__3B75D760" FromRole="userdetails" ToRole="shareamount" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="phoneno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__userdetai__group__38996AB5">
+    <End Role="groupdetails" Type="Self.groupdetail" Multiplicity="0..1" />
+    <End Role="userdetails" Type="Self.userdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groupdetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="userdetails">
+        <PropertyRef Name="groupid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__payment__userid__3E52440B">
+    <End Role="userdetails" Type="Self.userdetail" Multiplicity="0..1" />
+    <End Role="payment" Type="Self.payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userdetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="payment">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__shareamou__useri__3B75D760">
+    <End Role="userdetails" Type="Self.userdetail" Multiplicity="0..1" />
+    <End Role="shareamount" Type="Self.shareamount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userdetails">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="shareamount">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sharenowdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="groupdetails" EntityType="Self.groupdetail" />
+    <EntitySet Name="payments" EntityType="Self.payment" />
+    <EntitySet Name="shareamounts" EntityType="Self.shareamount" />
+    <EntitySet Name="userdetails" EntityType="Self.userdetail" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK__userdetai__group__38996AB5" Association="Self.FK__userdetai__group__38996AB5">
+      <End Role="groupdetails" EntitySet="groupdetails" />
+      <End Role="userdetails" EntitySet="userdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__payment__userid__3E52440B" Association="Self.FK__payment__userid__3E52440B">
+      <End Role="userdetails" EntitySet="userdetails" />
+      <End Role="payment" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__shareamou__useri__3B75D760" Association="Self.FK__shareamou__useri__3B75D760">
+      <End Role="userdetails" EntitySet="userdetails" />
+      <End Role="shareamount" EntitySet="shareamounts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
